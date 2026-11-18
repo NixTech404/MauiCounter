@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MojaApka.Views.AllCountersPage"
+             xmlns:models="clr-namespace:MojaApka.Models"
+             x:DataType="models:AllCounters"
+             Title="Liczniki">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding AddButtonText}"
+                     Clicked="Add_Clicked"
+                     IconImageSource="{FontImageSource Glyph='+', Color='Black', Size=22}"/>
+    </ContentPage.ToolbarItems>
+
+    <CollectionView
+        x:Name="countersCollection"
+        ItemsSource="{Binding Counters}"
+        Margin="20"
+        SelectionMode="Single"
+        SelectionChanged="countersCollection_SelectionChanged">
+
+        <CollectionView.ItemsLayout>
+            <LinearItemsLayout Orientation="Vertical"
+                               ItemSpacing="10"/>
+        </CollectionView.ItemsLayout>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="models:Counter">
+                <Frame Padding="10" BorderColor="LightGray" CornerRadius="8">
+                    <HorizontalStackLayout Spacing="15">
+                        <Label Text="{Binding Name}"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center"
+                               WidthRequest="150"/>
+                        <Label Text="{Binding Value}"
+                               FontSize="24"
+                               VerticalOptions="Center"
+                               HorizontalOptions="CenterAndExpand"/>
+                    </HorizontalStackLayout>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+
+    </CollectionView>
+</ContentPage>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MojaApka.Views.CounterPage"
+             xmlns:models="clr-namespace:MojaApka.Models"
+             x:DataType="models:Counter"
+             Title="Licznik">
+
+    <VerticalStackLayout
+        Spacing="20"
+        Margin="20"
+        VerticalOptions="Center">
+
+        <Label Text="{Binding Name}"
+               FontSize="28"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"/>
+
+        <Label x:Name="ValueLabel"
+               Text="{Binding Value}"
+               FontSize="64"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"/>
+
+        <Grid ColumnDefinitions="*,*"
+              ColumnSpacing="10">
+
+            <Button Text="-"
+                    FontSize="32"
+                    Grid.Column="0"
+                    Clicked="Minus_Clicked"
+                    BackgroundColor="IndianRed"
+                    TextColor="White"/>
+
+            <Button Text="+"
+                    FontSize="32"
+                    Grid.Column="1"
+                    Clicked="Plus_Clicked"
+                    BackgroundColor="MediumSeaGreen"
+                    TextColor="White"/>
+
+        </Grid>
+
+        <Button Text="Usun licznik"
+                Clicked="Delete_Clicked"
+                BackgroundColor="Gray"
+                TextColor="White"/>
+
+    </VerticalStackLayout>
+</ContentPage>
